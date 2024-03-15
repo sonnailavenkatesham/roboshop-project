@@ -12,7 +12,7 @@ services:
       - roboshop
     volumes:
     - sourse: redis
-      destination: /data/db
+      target: /data/db
       type: volume
   redis:
     image: redis:1.0.0
@@ -21,7 +21,7 @@ services:
       - roboshop
     volumes:
       - sourse: redis
-        destination: /data
+        target: /data
         type: volume
   catalogue:
     image: catalogue:1.0.0
