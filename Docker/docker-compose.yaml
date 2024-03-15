@@ -2,8 +2,8 @@ networks:
   roboshop:
     driver: bridge
 volumes:
-- mongodb:
-- redis:
+  mongodb:
+  redis:
 services:
   mongodb:
     image: mongodb:1.0.0
