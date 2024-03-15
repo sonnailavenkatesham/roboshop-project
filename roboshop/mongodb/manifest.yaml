@@ -5,6 +5,8 @@ metadata:
   namespace: roboshop
   labels:
     project: roboshop
+    environment: dev
+    component: mongodb
 spec:
   replicas: 1
   selector:
@@ -13,7 +15,7 @@ spec:
       environment: dev
       component: mongodb
   template:
-    metadat:
+    metadata:
       labels:
         project: roboshop
         environment: dev
