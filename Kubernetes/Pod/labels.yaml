@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: labels
+  labels:
+    project: roboshop
+    environment: dev
+spec:
+  containers:
+  - name: web
+    image: nginx
+    ports:
+    - name: http
+      protocol: TCP
+      containerPort: 80
+# labels are used to match with selectors in the Services
+---
+apiVersion:
+kind: Service
+metadata:
+  name: service
+spec:
+  selector:
+    project: roboshop
+    environment: dev
+    ports:
+    - name: servce
+      protocol: TCP
+      targetPort: http

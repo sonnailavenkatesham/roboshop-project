@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap
+  labels:
+    project: roboshop
+data:
+  USER_NAME: "centos"
+  COMPONENT: "dev"
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web
+sepc:
+  containers:
+  - name: web
+    image: nginx
+    env:
+    - name: USER
+      valueFrom:
+        configMapKeyRef:
+          name: configmap
+          key: USER_NAME
+    - name: environment
+      valueFrom:
+        configMapKeyRef:
+          name: configmap
+          key: COMPONENT

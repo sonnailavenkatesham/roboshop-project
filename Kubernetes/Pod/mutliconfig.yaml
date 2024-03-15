@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: multiconfig
+  lables:
+    project: roboshop
+data:
+  USER_NAME: "centos"
+  ENVIRONMENT: "Dev"
+---
+apiVersion:
+kind: Pod
+metadata:
+  name: multivalues
+spec:
+  containers:
+  - name: web
+    image: nginx
+    envFrom:
+    - configMapRef:
+        name: multiconfig

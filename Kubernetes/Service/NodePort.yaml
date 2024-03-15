@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+  labels:
+    project: roboshop
+spec:
+  type: NodePort
+  selector:
+    project: roboshop
+    environment: dev
+    component: web
+  ports:
+  - name: service-port
+    port: 80
+    protocol: TCP
+    targetPort: web-prot
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web
+  labels:
+    project: roboshop
+    environment: dev
+    component: web
+spec:
+  containers:
+  - name: web
+    images: nginx
+    ports:
+    - name: web-port
+      containerPort: 80
