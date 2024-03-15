@@ -41,7 +41,7 @@ services:
     networks:
       - roboshop
     depends_on:
-      - container_name
+      - catalogue
       - cart
       - user
     ports:
