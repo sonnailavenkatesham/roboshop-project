@@ -11,7 +11,7 @@ services:
     networks:
       - roboshop
     volumes:
-    - sourse: redis
+    - sourse: mongodb
       target: /data/db
       type: volume
   redis:
