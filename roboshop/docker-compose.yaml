@@ -1,0 +1,48 @@
+networks:
+  roboshop: 
+    driver: bridge
+services:
+  mongodb:
+    image: venkat1095/mongodb:1.0.0
+    container_name: mongodb
+    networks:
+      - roboshop
+  redis:
+    image: venkat1095/redis:1.0.0
+    container_name: redis
+    networks:
+      - roboshop
+  catalogue:
+    image: venkat1095/catalogue:1.0.0
+    container_name: catalogue
+    networks:
+      - roboshop
+    depends_on:
+      - mongodb
+  cart:
+    image: venkat1095/cart:1.0.0
+    container_name: cart
+    networks:
+      - roboshop
+    depends_on:
+      - catalogue
+      - redis
+  user:
+    image: venkat1095/user:1.0.0
+    container_name: user
+    networks:
+      - roboshop
+    depends_on:
+      - mongodb
+      - redis
+  web:
+    image: venkat1095/web:1.0.0
+    container_name: web
+    networks:
+      - roboshop
+    depends_on:
+      - catalogue
+      - cart
+      - user
+    ports:
+      - "8080:80"
