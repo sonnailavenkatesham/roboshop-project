@@ -11,9 +11,7 @@ services:
     networks:
       - roboshop
     volumes:
-      - src: mongodb
-        target: /data/db
-        type: volume
+      - mongodb: /data/db
   redis:
     image: redis:1.0.0
     container_name: redis
