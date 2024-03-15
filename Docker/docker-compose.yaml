@@ -4,7 +4,7 @@ networks:
 services:
   mongodb:
     image: web:1.0.0
-    container_name: web
+    container_name: mongodb
     networks:
       - roboshop
   redis:
