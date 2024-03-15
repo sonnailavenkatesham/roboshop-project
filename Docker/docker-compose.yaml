@@ -11,14 +11,18 @@ services:
     networks:
       - roboshop
     volumes:
-      - mongodb: /data/db
+    - sourse: redis
+      destination: /data/db
+      type: volume
   redis:
     image: redis:1.0.0
     container_name: redis
     networks:
       - roboshop
     volumes:
-      - redis: /data
+      - sourse: redis
+        destination: /data
+        type: volume
   catalogue:
     image: catalogue:1.0.0
     container_name: catalogue
