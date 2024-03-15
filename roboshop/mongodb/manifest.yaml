@@ -1,0 +1,45 @@
+apiVersion: appa/v1
+kind: Deployment
+metadata:
+  name: mongodb
+  namespace: roboshop
+  labels:
+    project: roboshop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      project: roboshop
+      environment: dev
+      component: mongodb
+  template:
+    metadat:
+      labels:
+        project: roboshop
+        environment: dev
+        component: mongodb
+    spec:
+      containers:
+      - name: mongodb
+        image: venkat1095/mongodb:1.0.0
+        ports:
+        - name: mongodb-port
+          containerPort: 27017
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb
+  namespace: roboshop
+  labels:
+    project: roboshop
+spec:
+  selector:
+    project: roboshop
+    environment: dev
+    component: mongodb
+  ports:
+  - name: mongodb
+    port: 80
+    targetPort: mongodb-port
+
