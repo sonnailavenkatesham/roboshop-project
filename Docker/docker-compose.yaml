@@ -18,7 +18,7 @@ services:
     networks:
       - roboshop
     volumes:
-      - redis: /data
+      - "redis: /data"
   catalogue:
     image: catalogue:1.0.0
     container_name: catalogue
