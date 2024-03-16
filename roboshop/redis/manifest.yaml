@@ -9,7 +9,7 @@ metadata:
 spec:
   replicas: 1
   selector:
-    matckLabels:
+    matchLabels:
       project: roboshop
       component: redis
   template:
