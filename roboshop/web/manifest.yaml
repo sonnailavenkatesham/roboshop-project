@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: web
-        image: venkat1095/web:1.0.0
+        image: venkat1095/web:2.0.0
         ports:
         - name: web
           containerPort: 80
