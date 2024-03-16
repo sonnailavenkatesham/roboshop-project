@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cart
+  namespace: roboshop
+  labels:
+    project: roboshop
+    component: cart
+sepc:
+  replicas: 1
+  selector:
+    matchLabels:
+      project: roboshop
+      component: cart
+  template:
+    metadata:
+      labels:
+        project: roboshop
+        component: cart
+    spec:
+      containers:
+      - name: cart
+        image: venkat1095/cart:2.0.0
+        envFrom:
+        - configMapRef:
+            name: cart
+        ports:
+        - name: cart
+          containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Service
+metadata:
+  name: cart
+  namespace: roboshop
+sepc:
+  selector:
+    project: roboshop
+    component: cart
+  ports:
+  - name: cart
+    port: 8080
+    targetPort: cart
+---
+apiVersion: v1
+kind: ConfogMap
+metadata:
+  name: cart
+  namespace: roboshop
+data:
+  REDIS_HOST: "redis"
+  CATALOGUE_HOST: "catalogue"
+  CATALOGUE_PORT: "8080"
