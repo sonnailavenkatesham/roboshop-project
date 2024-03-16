@@ -21,6 +21,9 @@ spec:
       containers:
       - name: user
         image: venkat1095/user:2.0.0
+        envFrom:
+        - configMapRef:
+            name: user
         ports:
         - name: user
           containerPort: 8080
