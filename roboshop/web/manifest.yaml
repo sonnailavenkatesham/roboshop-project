@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  namespace: roboshop
+  labels:
+    project: roboshop
+    environment: dev
+    component: web
+spec:
+  replicas: 1
+  selector:
+    matchLables:
+      project: roboshop
+      environment: dev
+      component: web
+  template:
+    metadata:
+      labels:
+        project: roboshop
+        environment: dev
+        component: web
+    sepc:
+      containers:
+      - name: web
+        image: venkat1095/web:1.0.0
+        ports:
+        - name: web
+          containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: web
+  namespace: roboshop
+spec:
+  type: LoadBalancer
+  selector:
+    project: roboshop
+    environment: dev
+    component: web
+  ports:
+  - name: web
+    port: 80
+    targetPort: web
