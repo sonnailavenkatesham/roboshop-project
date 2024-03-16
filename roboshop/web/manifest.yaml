@@ -20,7 +20,7 @@ spec:
         project: roboshop
         environment: dev
         component: web
-    sepc:
+    spec:
       containers:
       - name: web
         image: venkat1095/web:1.0.0
