@@ -13,12 +13,12 @@ spec:
       project: roboshop
       component: user
   template:
-    matadata:
+    metadata:
       labels:
         project: roboshop
         component: user
     spec:
-      container:
+      containers:
       - name: user
         image: venkat1095/user:2.0.0
         ports:
@@ -30,7 +30,7 @@ kind: Service
 metadata:
   name: user
   namespace: roboshop
-sepc:
+spec:
   selector:
     project: roboshop
     component: user
