@@ -43,7 +43,7 @@ spec:
     targetPort: cart
 ---
 apiVersion: v1
-kind: ConfogMap
+kind: ConfigMap
 metadata:
   name: cart
   namespace: roboshop
