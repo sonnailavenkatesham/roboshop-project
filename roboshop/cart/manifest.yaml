@@ -6,7 +6,7 @@ metadata:
   labels:
     project: roboshop
     component: cart
-sepc:
+spec:
   replicas: 1
   selector:
     matchLabels:
@@ -33,7 +33,7 @@ kind: Service
 metadata:
   name: cart
   namespace: roboshop
-sepc:
+spec:
   selector:
     project: roboshop
     component: cart
