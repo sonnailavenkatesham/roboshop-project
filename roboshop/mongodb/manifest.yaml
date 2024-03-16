@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: mongodb
-        image: venkat1095/mongodb:1.0.0
+        image: venkat1095/mongodb:2.0.0
         ports:
         - name: mongodb-port
           containerPort: 27017
